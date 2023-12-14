@@ -1,0 +1,18 @@
+# Nom du service à gérer (remplacez ceci par le nom de votre service)
+$nomService = "NomDuService"
+
+# Vérifier si le service existe
+if (Get-Service -Name $nomService -ErrorAction SilentlyContinue) {
+    Write-Host "Le service '$nomService' existe."
+
+    # Démarrer le service
+    Write-Host "Démarrage du service..."
+    Start-Service -Name $nomService
+    Start-Sleep -Seconds 5  # Attendre quelques secondes (facultatif)
+
+    # Arrêter le service
+    Write-Host "Arrêt du service..."
+    Stop-Service -Name $nomService
+} else {
+    Write-Host "Le service '$nomService' n'existe pas."
+}
